@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Rooms</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <%- include('../../layout/sidebar.ejs') %>
+
+            <!-- content -->
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <%- include('../../layout/navbar.ejs') %>
+
+                        <!--  Content -->
+                        <div class="container-fluid">
+                            <!-- Page Heading -->
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <a href="/room/create"
+                                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                        class="fa fa-plus-circle me-3" aria-hidden="true"></i>
+                                    Create Room</a>
+                                <h1 class="h3 mb-0 text-gray-800">Rooms</h1>
+                                <a href="/room/trash"
+                                    class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i
+                                        class="fas fa-trash me-3" aria-hidden="true"></i>
+                                    Trash</a>
+                            </div>
+
+                            <table class="table table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">STT</th>
+                                        <th scope="col">Room code</th>
+                                        <th scope="col">Size</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Number people</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% rooms.forEach( (room, index)=> { %>
+                                        <tr>
+                                            <td scope="col">
+                                                <%= index %>
+                                            </td>
+                                            <td scope="col">
+                                                <%= room.code %>
+                                            </td>
+                                            <td scope="col">
+                                                <%= room.size %> m<sup>2</sup>
+                                            </td>
+                                            <td scope="col">
+                                                <%= room.price %> vnd
+                                            </td>
+                                            <td scope="col">
+                                                <%= room.number_people %>
+                                            </td>
+                                            <td scope="col">
+                                                <%= room.status %>
+                                            </td>
+                                            <td scope="col">
+                                                <a href="room/update/<%= room.code %>"
+                                                    class="btn btn-warning btn-circle btn-sm mb-1">
+                                                    <i class="fa fa-wrench"></i>
+                                                </a>
+                                                <a href="room/delete/<%= room.code %>"
+                                                    class="btn btn-danger btn-circle btn-sm">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+
+                <!-- Footer -->
+                <%- include('../../layout/footer.ejs') %>
+            </div>
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Select "Logout" below if you are ready to end your current session.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                        Cancel
+                    </button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">...</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+</body>
+
+</html>
